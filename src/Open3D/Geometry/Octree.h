@@ -262,14 +262,14 @@ public:
     /// \brief DFS traversal of Octree from the root, with callback function
     /// called for each node.
     void Traverse(
-            const std::function<void(const std::shared_ptr<OctreeNode>&,
+            const std::function<bool(const std::shared_ptr<OctreeNode>&,
                                      const std::shared_ptr<OctreeNodeInfo>&)>&
                     f);
 
     /// \brief Const version of Traverse. DFS traversal of Octree from the root,
     /// with callback function called for each node.
     void Traverse(
-            const std::function<void(const std::shared_ptr<OctreeNode>&,
+            const std::function<bool(const std::shared_ptr<OctreeNode>&,
                                      const std::shared_ptr<OctreeNodeInfo>&)>&
                     f) const;
 
@@ -304,7 +304,7 @@ private:
     static void TraverseRecurse(
             const std::shared_ptr<OctreeNode>& node,
             const std::shared_ptr<OctreeNodeInfo>& node_info,
-            const std::function<void(const std::shared_ptr<OctreeNode>&,
+            const std::function<bool(const std::shared_ptr<OctreeNode>&,
                                      const std::shared_ptr<OctreeNodeInfo>&)>&
                     f);
 

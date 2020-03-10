@@ -186,13 +186,14 @@ TEST(Octree, EightCubesTraverse) {
     auto f = [&colors_traversed, &child_indices_traversed](
                      const std::shared_ptr<geometry::OctreeNode>& node,
                      const std::shared_ptr<geometry::OctreeNodeInfo>& node_info)
-            -> void {
+            -> bool {
         if (auto leaf_node =
                     std::dynamic_pointer_cast<geometry::OctreeColorLeafNode>(
                             node)) {
             colors_traversed.push_back(leaf_node->color_);
             child_indices_traversed.push_back(node_info->child_index_);
         }
+        return true;
     };
 
     // Check tree depth 1, we know child index in this case
